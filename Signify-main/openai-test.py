@@ -1,6 +1,7 @@
 from openai import OpenAI
 client = OpenAI()
 
+import os
 import cv2
 import numpy as np
 import os
@@ -13,7 +14,7 @@ import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-base_url = "http://127.0.0.1:8000"
+base_url = os.environ.get("BASE_URL", "http://127.0.0.1:8000")
 
 
 app = Flask(__name__)
