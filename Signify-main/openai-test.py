@@ -1,5 +1,8 @@
 from openai import OpenAI
-client = OpenAI()
+import os
+
+api_key = os.environ.get('OPENAI_API_KEY')
+client = OpenAI(api_key=api_key)
 
 import cv2
 import numpy as np
