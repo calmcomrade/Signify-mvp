@@ -30,21 +30,21 @@ jobs:
       
       - name: Install dependencies
         run: |
-        cd Signify-main
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+          cd Signify-main
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Collect static files
         run: |
-        cd Signify-main
-        python openai-test.py collectstatic --noinput
+          cd Signify-main
+          python openai-test.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
         run: |
-        cd Signify-main
-        zip release.zip ./* -r
+          cd Signify-main
+          zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
