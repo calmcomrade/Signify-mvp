@@ -70,7 +70,7 @@ const App = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   const handleSecondEnterClick = () => {
-    axios.post('https://teamsignifymvp.azurewebsites.net/', { text: transcript })
+    axios.post('http://localhost:5000', { text: transcript })
       .then(response => {
         const receivedVideoUrls = response.data.received_text;
         setVideoUrls(receivedVideoUrls);
@@ -81,7 +81,7 @@ const App = () => {
   };  
 
   const handleEnterClick = () => {
-    axios.post('https://teamsignifymvp.azurewebsites.net/', { text: texttranslate })
+    axios.post('http://localhost:5000', { text: texttranslate })
       .then(response => {
         const receivedVideoUrls = response.data.received_text;
         setVideoUrls(receivedVideoUrls);

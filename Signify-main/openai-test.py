@@ -14,12 +14,10 @@ import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-base_url = os.environ.get("BASE_URL", "http://127.0.0.1:8000")
-
-
 app = Flask(__name__)
 CORS(app)
 
+base_url = "http://127.0.0.1:8000"
 
 @app.route('/', methods=['POST'])
 def receive_text():
