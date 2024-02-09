@@ -20,33 +20,27 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: Create and start virtual environment
         run: |
-          cd Signify-main
           python -m venv venv
           source venv/bin/activate
       
       - name: Install dependencies
-        run: |
-          cd Signify-main
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: |
-          cd Signify-main
-          zip release.zip ./* -r
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
           name: python-app
           path: |
-            Signify-main/release.zip
+            release.zip
             !venv/
 
   deploy:
@@ -71,9 +65,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AF9B5AA9405A43C6A4F5D7472AB1DCE5 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B72CE90EFEE94D16882C40FC5B6E0468 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FE7BEE3551BB468FB2A274B86FC7BF25 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_80D0C96838C74F539CAEFCD2398B5E1C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_988C7C1DA2F54048B13F602E877C591E }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_BF4348FC230744AE930FC2C659D46652 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
